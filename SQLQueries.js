@@ -195,7 +195,7 @@ class SQLQueries{
             let sql = `UPDATE Account SET currentBalance = ? WHERE accountID= ?`;
 
             if(parseInt(amount) > parseInt(amt)){
-                return callback('Insuffient funds');
+                return callback('{“Status” : “Insufficient Funds”, “balance”: "'+ amt+'”}');
             }
 
             let tbalance= parseInt(amt) - parseInt(amount);
@@ -214,7 +214,7 @@ class SQLQueries{
                                     callback(err);
                                 }
                            
-                            return callback('Success, new balance: '+  tbalance);
+                            return callback('{“Status” : “Success”, “balance”: "'+ tbalance+'”}');
                         });
                     });
                 }
